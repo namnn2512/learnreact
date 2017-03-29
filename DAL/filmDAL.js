@@ -20,7 +20,7 @@ var filmDAL = {
                 var filterString = [queryfilmName, queryLength, queryYearPublished, queryFilmType, queryCountry].filter((val) => { return val; }).join(' AND ');
                 console.log(filterString);
 
-                connection.query('Select SQL_CALC_FOUND_ROWS * from films1 where ' + filterString + ' limit ?,?', [offset, perPage], (err, rows, fields) => {
+                connection.query('Select SQL_CALC_FOUND_ROWS * from films where ' + filterString + ' limit ?,?', [offset, perPage], (err, rows, fields) => {
                     if (err) {
                         connection.release();
                         console.log('error in query');
