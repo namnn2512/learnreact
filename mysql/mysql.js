@@ -7,12 +7,12 @@ var database = {
         return new Promise((resolve, reject) => {
             pool.getConnection(function (err, connection) {
                 if (err) {
-                    return reject(err);
+                    return reject(err.stack);
                 }
                 return resolve(connection);
             });
         });
     }
-}
+};
 
 export default database;

@@ -1,51 +1,14 @@
 import express from 'express';
-import db from '../mysql/mysql';
-import config from '../config/config'
+import filmDAL from '../DAL/filmDAL';
 
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', (req, res) => {
-    db.getConnection().then(connection => {
-        var page = req.query.page ? parseInt(req.query.page, 10) : 0;
-        var perPage = parseInt(config.paging.PER_PAGE, 10);
-        var offset = (page - 1) * perPage;
-        var filmName = req.query.searchText ? req.query.searchText : '';     
-        var filterParams = JSON.parse(req.query.filterParams);
-
-        var queryfilmName = 'FilmName like '+ connection.escape('%' + filmName + '%');
-        var queryLength = filterParams.filmLength ? 'Length = ' + connection.escape(filterParams.filmLength) : '';
-        var queryYearPublished = filterParams.yearPublished ? 'YearPublished = ' + connection.escape(filterParams.yearPublished) : '';
-        var queryFilmType = filterParams.filmType ? 'FilmType = ' + connection.escape(filterParams.filmType) : '';
-        var queryCountry = filterParams.country ? 'Country = ' + connection.escape(filterParams.country) : '';
-
-        var filterString = [queryfilmName, queryLength, queryYearPublished, queryFilmType, queryCountry].filter( (val) => {return val;}).join(' AND ');
-        console.log(filterString);
-
-        connection.query('Select SQL_CALC_FOUND_ROWS * from films where '+ filterString +' limit ?,?', [offset, perPage], (err, rows, fields) => {
-            if (err) {
-                connection.release();
-                res.send('error in query');
-            } else {
-                connection.query('SELECT FOUND_ROWS() as rowsCount;', (err2, total) => {
-                    connection.release();
-                    if (err2) {
-                        res.send('error in subquery');
-                    } else {
-                        var pagecount = Math.ceil(total[0].rowsCount / perPage)
-                        var data = {
-                            films: rows,
-                            total_count: pagecount
-                        };
-                        res.json(data);
-                    }
-                });
-
-            }
-        });
+    filmDAL.getFilms(req).then(data => {
+        res.json(data);
     }).catch(err => {
-        connection.release();
-        res.send('connect fail');
+        res.json(err);
     });
 });
 
