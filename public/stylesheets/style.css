@@ -15,3 +15,21 @@ a {
 footer {
     margin: 50px 0;
 }
+.col-md-12percent,
+.col-md-22percent {
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+@media (min-width: 992px) {
+    .col-md-22percent {
+        width: 22%;
+        float: left;
+    }
+    .col-md-12percent {
+        width: 12%;
+        float: left;
+    }
+}

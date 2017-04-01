@@ -37,7 +37,6 @@ var filmDAL = {
                                     films: rows,
                                     total_count: pagecount
                                 };
-                                console.log(data);
                                 return resolve(data);
                             }
                         });
@@ -49,6 +48,82 @@ var filmDAL = {
             });
         });
     },
+
+    getFilmLength: function (req) {
+        return new Promise((resolve, reject) => {
+            db.getConnection().then(connection => {
+                var sqlQuery = 'select * from filmlength;';
+                connection.query(sqlQuery, (err, rows, fields) => {
+                    connection.release();
+                    if (err) {
+                        console.log('error in query');
+                        return reject(err.stack);
+                    } else {
+                        return resolve(rows);
+                    }
+                }).catch(err => {
+                    return reject(err);
+                });
+            });
+        });
+    },
+
+    getFilmTypes: function (req) {
+        return new Promise((resolve, reject) => {
+            db.getConnection().then(connection => {
+                var sqlQuery = 'select * from filmtypes;';
+                connection.query(sqlQuery, (err, rows, fields) => {
+                    connection.release();
+                    if (err) {
+                        console.log('error in query');
+                        return reject(err.stack);
+                    } else {
+                        return resolve(rows);
+                    }
+                }).catch(err => {
+                    return reject(err);
+                });
+            });
+        });
+    },
+
+    getCountries: function (req) {
+        return new Promise((resolve, reject) => {
+            db.getConnection().then(connection => {
+                var sqlQuery = 'select * from country;';
+                connection.query(sqlQuery, (err, rows, fields) => {
+                    connection.release();
+                    if (err) {
+                        console.log('error in query');
+                        return reject(err.stack);
+                    } else {
+                        return resolve(rows);
+                    }
+                }).catch(err => {
+                    return reject(err);
+                });
+            });
+        });
+    },
+
+    getYearPublished: function (req) {
+        return new Promise((resolve, reject) => {
+            db.getConnection().then(connection => {
+                var sqlQuery = 'select distinct YearPublished from films ORDER BY YearPublished;';
+                connection.query(sqlQuery, (err, rows, fields) => {
+                    connection.release();
+                    if (err) {
+                        console.log('error in query');
+                        return reject(err.stack);
+                    } else {
+                        return resolve(rows);
+                    }
+                }).catch(err => {
+                    return reject(err);
+                });
+            });
+        });
+    }
 };
 
 export default filmDAL;

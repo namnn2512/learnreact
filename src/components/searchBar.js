@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FormGroup, FormControl, Button } from 'react-bootstrap';
 import ReactDOM from 'react-dom';
 
-var SearchControl = React.createClass({
+var SearchBar = React.createClass({
     search() {
         var searchText = ReactDOM.findDOMNode(this.refs.txtSearch).value;
         this.props.onClick(searchText);
@@ -33,4 +33,4 @@ var SearchControl = React.createClass({
     }
 });
 
-export default SearchControl
+export default SearchBar

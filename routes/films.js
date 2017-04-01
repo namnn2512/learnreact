@@ -12,6 +12,20 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/GetFilterDropdownData', (req, res) => {
+    var result = {};
+
+    Promise.all([filmDAL.getFilmLength(req), filmDAL.getFilmTypes(req), filmDAL.getYearPublished(req), filmDAL.getCountries(req)])
+        .then(data => {
+            result['filmLength'] = data[0];
+            result['filmTypes'] = data[1];
+            result['yearPublished'] = data[2];
+            result['countries'] = data[3];
+            res.json(result);
+        })
+        .catch(err => { console.log(err) });
+});
+
 router.get('/db', (req, res) => {
     db.getConnection(function (err, connection) {
         if (err) {
