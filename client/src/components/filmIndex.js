@@ -6,7 +6,6 @@ import FilmRow from './filmRow';
 import SearchBar from './searchBar';
 import FilterBar from './filterBar';
 import ajax from '../helpers/ajax';
-import request from 'superagent';
 import { Pagination } from 'react-bootstrap';
 
 var FilmIndex = React.createClass({

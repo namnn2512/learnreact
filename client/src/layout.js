@@ -11,8 +11,8 @@ ReactDOM.render(
         <div>
             <Route exact path="/" component={Home} />
 
-            <Route path="/film/duyetphim" component={FilmIndex}/>
-            <Route path="/film/filmdetail/:filmId" component={FilmDetail}/>
+            <Route path="/phim/duyetphim" component={FilmIndex}/>
+            <Route path="/phim/filmdetail/:filmId" component={FilmDetail}/>
         </div>
     </Router>
     , document.getElementById('app')
