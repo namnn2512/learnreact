@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
-import NavBar from './navbar'
-import Footer from './footer'
+import ReactDOM from 'react-dom';
+import NavBar from './navbar';
+import Footer from './footer';
 import FilmRow from './filmRow';
 import SearchBar from './searchBar';
 import FilterBar from './filterBar';
-import axios from 'axios';
+import ajax from '../helpers/ajax';
 import request from 'superagent';
 import { Pagination } from 'react-bootstrap';
 
@@ -30,7 +30,7 @@ var FilmIndex = React.createClass({
     },
 
     loadFilmsFromServer() {
-        axios.get('/films', {
+        ajax.get('/films', {
             params: {
                 page: this.state.page,
                 searchText: this.state.searchText,

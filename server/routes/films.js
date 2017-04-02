@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 
 router.get('/GetFilterDropdownData', (req, res) => {
     var result = {};
-
+    console.log(req);
     Promise.all([filmDAL.getFilmLength(req), filmDAL.getFilmTypes(req), filmDAL.getYearPublished(req), filmDAL.getCountries(req)])
         .then(data => {
             result['filmLength'] = data[0];
@@ -26,7 +26,7 @@ router.get('/GetFilterDropdownData', (req, res) => {
         .catch(err => { console.log(err) });
 });
 
-router.get('/db', (req, res) => {
+router.get('/db', (req, res, next) => {
     db.getConnection(function (err, connection) {
         if (err) {
             connection.release();

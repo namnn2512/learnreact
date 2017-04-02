@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import ReactRouterBootstrap, { LinkContainer } from 'react-router-bootstrap';
+import RouterLink from './routerLink';
+import {NavLink} from 'react-router-dom';
+
 
 class NavBar extends Component {
 
@@ -14,7 +18,7 @@ class NavBar extends Component {
                 </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav>
-                        <NavItem eventKey={1} href="#">Link</NavItem>
+                        <NavItem eventKey={1}>Phim</NavItem>
                         <NavItem eventKey={2} href="#">Link</NavItem>
                         <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
                             <MenuItem eventKey={3.1}>Action</MenuItem>

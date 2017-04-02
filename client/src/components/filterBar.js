@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
 import ReactDOM from 'react-dom';
-import axios from 'axios';
+import ajax from '../helpers/ajax';
 
 class FilterBar extends Component {
     constructor(){
@@ -17,7 +17,7 @@ class FilterBar extends Component {
         this.loadFilterData();
     }
     loadFilterData() {
-        axios.get('/films/GetFilterDropdownData').then((res) => {
+        ajax.get('/films/GetFilterDropdownData').then((res) => {
             var oldState = this.state;
             oldState.filmLength = res.data.filmLength;
             oldState.filmTypes = res.data.filmTypes;
@@ -32,7 +32,7 @@ class FilterBar extends Component {
         var data ={
             filmLength: '',
             yearPublished: '',
-            filmType: 1,
+            filmType: '',
             country: '',
         };
 
