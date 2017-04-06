@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { FormGroup, FormControl, Button } from 'react-bootstrap';
-import ReactDOM from 'react-dom';
 
 var SearchBar = React.createClass({
     search() {
-        var searchText = ReactDOM.findDOMNode(this.refs.txtSearch).value;
+        var searchText = this.refs.txtSearch.value;
         this.props.onClick(searchText);
     },
     handleKeyPress(e) {
@@ -15,18 +13,15 @@ var SearchBar = React.createClass({
     render() {
         return (
             <div className="row">
-                <div className="col-xs-10">
-                    <FormGroup controlId="formBasicText">
-                        <FormControl
-                            type="text"
-                            ref="txtSearch"
-                            placeholder="Search"
-                            onKeyPress={this.handleKeyPress}
-                            />
-                    </FormGroup>
-                </div>
-                <div className="col-xs-2">
-                    <Button bsStyle="primary" block onClick={this.search}>Tìm</Button>
+                <div className="col-xs-12">
+                    <div className="form-group">
+                        <div className="input-group">
+                            <input type="text" ref="txtSearch" placeholder="Search" onKeyPress={this.handleKeyPress} id="addon1" className="form-control" />
+                            <span className="input-group-btn">
+                                <button className="btn btn-primary btn-block" onClick={this.search} type="button">Tìm</button>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
         )

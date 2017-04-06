@@ -1,16 +1,16 @@
 body {
    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-   padding-top: 70px;
 }
 
-a {
-  color: #00B7FF;
+a.active {
+    color: inherit;
+    background-color: rgba(255, 255, 255, 0.1) !important;
 }
 .portfolio-item {
-    margin-bottom: 25px;
+    margin-bottom: 25px !important;
 }
 .img-poster{
-    height: 200px;
+    height: 200px !important;
 }
 footer {
     margin: 50px 0;
@@ -25,11 +25,11 @@ footer {
 
 @media (min-width: 992px) {
     .col-md-22percent {
-        width: 22%;
-        float: left;
+        width: 22% !important;
+        float: left !important;
     }
     .col-md-12percent {
-        width: 12%;
-        float: left;
+        width: 12% !important;
+        float: left !important;
     }
 }

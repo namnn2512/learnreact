@@ -1,39 +1,68 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import ReactRouterBootstrap, { LinkContainer } from 'react-router-bootstrap';
-import RouterLink from './routerLink';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 
 class NavBar extends Component {
 
     render() {
+        // const isActiveFunc = (match, location) =>{
+        //     var that = this;
+        //     console.log(match);
+        //     console.log(that);
+        //     return false;
+        // }
         return (
-            <Navbar inverse collapseOnSelect fixedTop>
-                <Navbar.Header>
-                    <Navbar.Brand>
-                        <a href="#">React-Bootstrap</a>
-                    </Navbar.Brand>
-                    <Navbar.Toggle />
-                </Navbar.Header>
-                <Navbar.Collapse>
-                    <Nav>
-                        <NavItem eventKey={1}>Phim</NavItem>
-                        <NavItem eventKey={2} href="#">Link</NavItem>
-                        <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-                            <MenuItem eventKey={3.1}>Action</MenuItem>
-                            <MenuItem eventKey={3.2}>Another action</MenuItem>
-                            <MenuItem eventKey={3.3}>Something else here</MenuItem>
-                            <MenuItem divider />
-                            <MenuItem eventKey={3.3}>Separated link</MenuItem>
-                        </NavDropdown>
-                    </Nav>
-                    <Nav pullRight>
-                        <NavItem eventKey={1} href="#">Link Right</NavItem>
-                        <NavItem eventKey={2} href="#">Link Right</NavItem>
-                    </Nav>
-                </Navbar.Collapse>
-            </Navbar>
+            <div className="navbar navbar-default">
+                <div className="container-fluid">
+                    <div className="navbar-header">
+                        <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-default-collapse">
+                            <span className="icon-bar"></span>
+                            <span className="icon-bar"></span>
+                            <span className="icon-bar"></span>
+                        </button>
+                        <NavLink exact to="/" className="navbar-brand" activeClassName="active">Trang chủ</NavLink>
+                    </div>
+                    <div className="navbar-collapse collapse navbar-default-collapse">
+                        <ul className="nav navbar-nav">
+                            <li><NavLink to="/phim/duyetphim" activeClassName="active">Phim</NavLink></li>
+                            <li className="dropdown">
+                                <a href="bootstrap-elements.html" data-target="#" className="dropdown-toggle" data-toggle="dropdown">Dropdown
+            <b className="caret"></b></a>
+                                <ul className="dropdown-menu">
+                                    <li><a href="javascript:void(0)">Action</a></li>
+                                    <li><a href="javascript:void(0)">Another action</a></li>
+                                    <li><a href="javascript:void(0)">Something else here</a></li>
+                                    <li className="divider"></li>
+                                    <li className="dropdown-header">Dropdown header</li>
+                                    <li><a href="javascript:void(0)">Separated link</a></li>
+                                    <li><a href="javascript:void(0)">One more separated link</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <form className="navbar-form navbar-left">
+                            <div className="form-group">
+                                <input type="text" className="form-control col-md-8" placeholder="Search" />
+                            </div>
+                        </form>
+                        <ul className="nav navbar-nav navbar-right">
+                            <li><a href="javascript:void(0)">Link</a></li>
+                            <li className="dropdown">
+                                <a href="javascript:void(0)" data-target="#" className="dropdown-toggle" data-toggle="dropdown">Dropdown
+            <b className="caret"></b></a>
+                                <ul className="dropdown-menu">
+                                    <li><a href="javascript:void(0)">Action</a></li>
+                                    <li><a href="javascript:void(0)">Another action</a></li>
+                                    <li><a href="javascript:void(0)">Something else here</a></li>
+                                    <li className="divider"></li>
+                                    <li><a href="javascript:void(0)">Separated link</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         )
     }
 }
