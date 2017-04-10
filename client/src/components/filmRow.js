@@ -8,7 +8,7 @@ class FilmRow extends Component {
         return (
             <div className="row">
             {lstFilms.map((film, i)=>{
-                return <FilmItem key = {i} imgUrl = {film.ImgUrl} description = {film.Description} filmName = {film.FilmName}/>
+                return <FilmItem key = {i} imgUrl = {film.ImgUrl} description = {film.Description} filmName = {film.FilmName} urlDetail = {film.Slug +'-'+film.Id}/>
             })}
             </div>
         )

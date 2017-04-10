@@ -33,3 +33,80 @@ footer {
         float: left !important;
     }
 }
+
+/*detail page*/
+ul.movie-detail li{
+    list-style: none;
+    border-bottom: 1px solid #009688;
+    width: 100%;
+    padding: 10px 0;
+    overflow: hidden;
+    font-size: 14px;
+    color: #272a34;
+    font-weight: bold;
+}
+
+ul.movie-detail li .fa{
+    padding-right: 8px;
+}
+
+.detail-container .left-detail{
+    width: 42%;
+    float: left;
+}
+
+.detail-container .left-detail img{
+    width: 100%;
+    height: auto;
+}
+
+.detail-container .right-detail{
+    width: 58%;
+    float: left;
+}
+
+.movie-trailer {
+    font-size: 25px;
+    margin-bottom: 30px;
+}
+
+.movie-trailer .text-trailer {
+    font-size: 25px;
+    color: #009688;
+    padding: 15px 0px;
+}
+
+@media (max-width: 540px) {
+    .detail-container .left-detail{
+        width: 100%;
+    }
+
+    .detail-container .right-detail{
+        width: 100%;
+    }
+}
+
+.suggest-list{
+    border-top: 5px solid #009688;
+    padding-top: 15px 0;
+}
+
+.suggest-list ul{
+    padding: 0px;
+}
+
+.suggest-list ul li {
+    display: inline-block;
+    width: 45%;
+    float: left;
+    margin: 2.5%;
+}
+
+.suggest-list ul li p {
+    font-weight: 400;
+    margin-top: 5px;
+    line-height: 1.4em;
+    font-size: 0.9em;
+    color: #494949;
+}
+/*end*/

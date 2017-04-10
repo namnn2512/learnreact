@@ -123,6 +123,31 @@ var filmDAL = {
                 });
             });
         });
+    },
+
+    getFilmDetail: function(req){
+        return new Promise((resolve, reject) => {
+            db.getConnection().then(connection => {
+                var id = req.query.filmId ? parseInt(req.query.filmId, 10) : 0;
+                var query = 'select a.Id, a.FilmName, a.Description, a.ImgUrl, a.YearPublished, a.Slug, a.TrailerUrl, UNIX_TIMESTAMP(a.TimeLength) as TimeLength, b.Country, c.FilmTypeDesc, c.FilmTypeUrl from films a'
+                            + ' left join country b'
+                            + ' on a.Country = b.id'
+                            + ' left join filmtypes c'
+                            + ' on a.FilmType = c.id'
+                            + ' where a.Id = ' + connection.escape(id);
+                connection.query(query, (err, rows, fields) => {
+                    connection.release();
+                    if (err) {
+                        console.log('error in query');
+                        return reject(err.stack);
+                    } else {
+                        return resolve(rows);
+                    }
+                }).catch(err => {
+                    return reject(err);
+                });
+            });
+        });
     }
 };
 

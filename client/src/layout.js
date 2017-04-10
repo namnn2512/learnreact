@@ -19,9 +19,14 @@ ReactDOM.render(
     <Router>
         <div>
             <Route exact path="/" component={Home} />
-
-            <Route path="/phim/duyetphim" component={FilmIndex} />
-            <Route path="/phim/filmdetail/:filmId" component={FilmDetail} />
+            <Switch>
+                <Route path="/phim/duyetphim" component={FilmIndex} />
+                <Route path="/phim/:filmSlug([A-Za-z0-9-]+)-:filmId(\d{3,4})" component={FilmDetail} />
+                <Route path="/phim/hanh-dong-gia-tuong" render={() => <h1>Hành động giả tưởng</h1>} />
+                <Route path="/phim/hoat-hinh" render={() => <h1>Hoạt hình</h1>} />
+                <Route path="/phim/kinh-di" render={() => <h1>Kinh dị</h1>}/>
+                <Route path="/phim/tam-ly-hai-huoc" render={() => <h1>Tâm lý hài hước</h1>}/>
+            </Switch>
         </div>
     </Router>
     , document.getElementById('app')
